@@ -1,0 +1,26 @@
+<body>
+    <div>
+        <mat-toolbar color="primary">
+            <button mat-icon-button aria-label="Example icon button with a menu icon">
+                <mat-icon>menu</mat-icon>
+              </button>
+            <span><img src="./assets/584c57c01fc21103bb375bae.png" class="logo"style="width: 50px;"></span>
+            <span class="example-spacer"></span>
+            <img src="./assets/img_avatar.png" class="avatar"  style="width: 50px"> 
+          </mat-toolbar>
+    </div>
+    <div *ngif="event">
+       <h1>{{event.name}}</h1>
+    </div>
+    <div>
+        <mat-card class="example-card">
+            <img mat-card-image src="{{event.picture}}" alt="event picture">
+            <mat-card-content>
+              <p>
+                {{event.description}}
+              </p>
+            </mat-card-content>
+            rsvp
+          </mat-card>
+    </div>
+</body>

@@ -1,0 +1,14 @@
+import { Event } from './event';
+
+export const EVENTS: Event[] = [
+  { id: 11, name: 'C# seminar', date: '03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string'},
+  { id: 12, name: 'Narco',date:'03.04.2020',description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string' },
+  { id: 13, name: 'Bombasto',date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string' },
+  { id: 14, name: 'Celeritas',date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string' },
+  { id: 15, name: 'Magneta',date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string'  },
+  { id: 16, name: 'RubberMan',date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string' },
+  { id: 17, name: 'Dynama',date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string' },
+  { id: 18, name: 'Dr IQ' ,date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string'},
+  { id: 19, name: 'Magma' ,date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string'},
+  { id: 20, name: 'Tornado',date:'03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string' }
+];

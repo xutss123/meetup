@@ -1,0 +1,48 @@
+<body>
+    <div>
+        <mat-toolbar color="primary">
+            <button mat-icon-button aria-label="Example icon button with a menu icon">
+                <mat-icon>menu</mat-icon>
+              </button>
+            <span><img src="./assets/584c57c01fc21103bb375bae.png" class="logo"style="width: 50px;"></span>
+            <span class="example-spacer"></span>
+            <img src="./assets/img_avatar.png" class="avatar"  style="width: 50px"> 
+          </mat-toolbar>
+    </div>
+    <div>
+        <ul>
+            <li>
+                <mat-card class="example-card">
+                    <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>New event</mat-card-title>
+                    </mat-card-header>
+                    <button class="add" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                        <mat-icon>plus_one</mat-icon>
+                      </button>
+                    <mat-card-content>
+                    <p>
+                    </p>
+                    </mat-card-content>
+                </mat-card>
+            </li>
+            <li *ngFor="let event of events">
+                <a routerLink="/event/{{event.id}}">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{event.name}}</mat-card-title>
+                    <mat-card-subtitle>{{event.date}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="./assets/pexels-photo-3183183.jpeg" alt="meeting image">
+                    <mat-card-content>
+                    <p>
+                    {{event.name}}
+                    </p>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+            </li>
+        </ul>
+    </div>
+</body>
