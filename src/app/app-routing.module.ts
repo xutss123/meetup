@@ -6,7 +6,7 @@ import{LoginComponent} from './login/login.component';
 import{NewEventComponent} from './new-event/new-event.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {path: 'dashboard', component: DashboardComponent},
   {path: 'event/:id', component: EventComponent},
   {path:'login', component: LoginComponent},

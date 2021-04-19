@@ -1,89 +1,115 @@
 
 <body>
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>General description</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="event.name" placeholder="name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Description</mat-label>
-            <input matInput placeholder="name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>topic</mat-label>
-            <input matInput placeholder="name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>date</mat-label>
-            <input matInput placeholder="name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>duration</mat-label>
-            <input matInput placeholder="name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>picture</mat-label>
-            <input matInput placeholder="name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>location</mat-label>
-            <input matInput placeholder="name" formControlName="firstCtrl" required>
-          </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Attendance">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>RSVP limit</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="limit"
-                 required>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Open register time</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder=""
-                   required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Close</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder=""
-                   required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Has fee?</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder=""
-                   required>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Fee</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder="">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>VIsibility</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder=""
-                   required>
-          </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+    <div>
+        <mat-toolbar color="primary">
+            <button  mat-icon-button aria-label="Example icon button with a menu icon">
+                <mat-icon>menu</mat-icon>
+              </button>
+            <span><img src="./assets/584c57c01fc21103bb375bae.png" class="logo"style="width: 50px;"></span>
+            <span class="example-spacer"></span>
+            <img src="./assets/img_avatar.png" class="avatar"  style="width: 50px"> 
+          </mat-toolbar>
+    </div>
+    <div class="formCard">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form (ngSubmit)="onSubmit()" [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>General description</ng-template>
+                    <div class="formFields">
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="name" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Description</mat-label>
+                            <input matInput placeholder="description" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Topic</mat-label>
+                            <input matInput placeholder="Topic" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="firstCtrl">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>          
+                        <mat-form-field>
+                            <mat-label>Duration</mat-label>
+                            <input matInput placeholder="duration" formControlName="firstCtrl" required>
+                        </mat-form-field> 
+                        <mat-form-field>
+                            <mat-toolbar>
+                                <button mat-flat-button color="primary">
+                                Browse
+                                </button>
+                                <input type="file" #fileInput id="uploadFile" formControlName="firstCtrl" name="uploadFile" multiple="multiple"
+                                accept="image/*" />
+                            </mat-toolbar>
+                        </mat-form-field>            
+                        <mat-form-field>
+                            <mat-label>Location</mat-label>
+                            <input matInput placeholder="location" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                    <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" label="Attendance">
+                <form [formGroup]="secondFormGroup">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>RSVP limit</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder="limit"
+                                    required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Open register time</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder="openregister"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Close</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder="closeregister"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Has fee?</mat-label>
+                            <input type="checkbox"  formControlName="secondCtrl" placeholder=""
+                                required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Fee</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder="">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>VIsibility</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder=""
+                                required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="thirdFormGroup" label="Group visibility">
+                <form [formGroup]="thirdFormGroup">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Visibility</mat-label>
+                            <input matInput formControlName="thirdCtrl" placeholder="" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button type="submit" matStepperNext>Submit</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
 </body>

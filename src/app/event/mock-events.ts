@@ -1,4 +1,4 @@
-import { Event } from './event';
+import { Event} from './event';
 
 export const EVENTS: Event[] = [
   { id: 11, name: 'C# seminar', date: '03.04.2020', description: 'this is a description', topic: 'programming',duration: '2 h',picture: 'string',location: 'string',rsvp_limit: 3,open_register_time: 'string',close_register_time: 'string',has_fee: false,fee: 0,visibility: 'string'},

@@ -19,4 +19,5 @@ export class EventService {
   getEvent(id: number): Observable<Event> {
     return of(EVENTS.filter(event => event.id === id)[0]);
   }
+
 }

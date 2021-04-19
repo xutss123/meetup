@@ -16,7 +16,7 @@ export class EventComponent implements OnInit {
   event?: Event;
 
   constructor(private eventService: EventService,
-     private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class EventComponent implements OnInit {
   }
 
    getEvent(): void {
-     const id = +this.route.snapshot.paramMap.get('id');
+    const id: number = this.route.snapshot.params.get('id');
      this.eventService.getEvent(id)
        .subscribe(event => this.event = event);
    }
