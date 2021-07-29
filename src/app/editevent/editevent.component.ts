@@ -8,14 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import { EVENTS } from '../event/mock-events';
-
 @Component({
-  selector: 'app-new-event',
-  templateUrl: './new-event.component.html',
-  styleUrls: ['./new-event.component.sass']
+  selector: 'app-editevent',
+  templateUrl: './editevent.component.html',
+  styleUrls: ['./editevent.component.sass']
 })
+export class EditeventComponent implements OnInit {
 
-export class NewEventComponent implements OnInit {
 
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
@@ -27,6 +26,7 @@ export class NewEventComponent implements OnInit {
   isLoading: boolean = false;
   events: any;
   hide = true;
+  event?: Event;
   groupList : String[] = ["IBM Developer Romania", "IBM Developer Croatia", "IBM Developer Bulgaria", "IBM Developer Slovakia", "IBM Developer Austria", "IBM Developer Poland", "IBM Developer Netherlands"]
 
   constructor(private _formBuilder: FormBuilder, private eventService: EventService, private apiService:ApiService, private route: ActivatedRoute,
@@ -34,6 +34,7 @@ export class NewEventComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getEvent();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -43,6 +44,30 @@ export class NewEventComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+    this.fillform();
+  }
+  fillform():void {
+    this.event = EVENTS.filter(event=>event.id === 12)[0];
+    this.firstFormGroup.controls.name.setValue(this.event.name);
+    this.firstFormGroup.controls.description.setValue(this.event.description);
+    let topic = this.firstFormGroup.controls.topic.setValue(this.event.topic);
+    let date = this.firstFormGroup.controls.date.setValue(this.event.date);
+    let duration = this.firstFormGroup.controls.duration.setValue(this.event.duration);
+    let location = this.firstFormGroup.controls.location.setValue(this.event.location);
+    let rsvp_limit = this.secondFormGroup.controls.limit.setValue(this.event.rsvp_limit);
+    let open_register_time = this.firstFormGroup.controls.openregister.setValue(this.event.open_register_time);
+    let close_register_time = this.firstFormGroup.controls.closeregister.setValue(this.event.close_register_time);
+    let has_fee = this.firstFormGroup.controls.has_fee.setValue(this.event.has_fee);
+    let fee = this.firstFormGroup.controls.fee.setValue(this.event.fee);
+    let time = this.firstFormGroup.controls.time.setValue(this.event.time);
+    let is_online = this.firstFormGroup.controls.is_online.setValue(this.event.is_online);
+    let groups = this.secondFormGroup.controls.groups.setValue(this.event.groups);
+    let link_meeting = this.firstFormGroup.controls.linkonline.setValue(this.event.link_meeting);
+  }
+  getEvent(): void{
+    const id: number = this.route.snapshot.params['id'];
+    console.log(EVENTS.find(event => event.id === 12));
+    this.event = EVENTS.find(event => event.id === 12);
   }
   onSubmit(){
     this.submitted = true;
@@ -67,10 +92,10 @@ export class NewEventComponent implements OnInit {
     let groups = this.secondFormGroup.controls.groups.value;
     let link_meeting = this.firstFormGroup.controls.linkonline.value;
 
-    console.log("here");
     let event = { id, name, description, picture, topic, date, duration, location, rsvp_limit, open_register_time, close_register_time, has_fee, fee, time, is_online, groups, link_meeting };
     // this.apiService.createEvent(event).subscribe(event => this.events.push(event));
     EVENTS.push(event);
     this.router.navigate(['/dashboard']);
   }
+
 }

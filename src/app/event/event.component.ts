@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EventService } from '../event.service';
+import { EventService } from '../service/event.service';
 import {Event} from './event';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { EVENTS } from './mock-events';
 
 
 
@@ -13,19 +14,18 @@ import { Location } from '@angular/common';
 })
 export class EventComponent implements OnInit {
 
-  event?: Event;
-
+  event?: Event  // = new Event(0,"event", "description", "topic", "date", "duration", "picture", "location", 0," time", "time", false, 0, "true");
   constructor(private eventService: EventService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location) {
+     }
 
   ngOnInit(): void {
    this.getEvent();
   }
-
-   getEvent(): void {
-    const id: number = this.route.snapshot.params.get('id');
-     this.eventService.getEvent(id)
-       .subscribe(event => this.event = event);
-   }
+  getEvent(): void{
+    const id: number = this.route.snapshot.params['id'];
+    console.log(EVENTS.find(event => event.id === 12));
+    this.event = EVENTS.find(event => event.id === 12);
+  }
 }

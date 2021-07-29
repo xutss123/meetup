@@ -6,3 +6,25 @@ img.avatar {
 img.logo {
   margin-top: auto;
 }
+
+img.eventimage {
+  margin-top: 70px;
+  margin-left: 10px;
+  width: 500px;
+  height: 300px;
+}
+
+mat-card {
+  display: flex;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+mat-card-title {
+  display: flex;
+}
+
+img {
+  width: 120px;
+}

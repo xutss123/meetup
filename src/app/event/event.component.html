@@ -4,9 +4,37 @@
         <button  mat-icon-button aria-label="Example icon button with a menu icon">
             <mat-icon>menu</mat-icon>
           </button>
-        <span><img src="./assets/584c57c01fc21103bb375bae.png" class="logo"style="width: 50px;"></span>
+        <span><img src="./assets/584c57c01fc21103bb375bae.png" class="logo"style="width: 50px;" ></span>
         <span class="example-spacer"></span>
         <img src="./assets/img_avatar.png" class="avatar"  style="width: 50px"> 
       </mat-toolbar>
-</div>
+  </div>
+  <div *ngIf= "event">
+    <mat-card class="example-card">
+      <mat-card-title style="height: 40px;width: 23000px;">
+        {{event.name}} 
+        <a routerLink="/editevent/{{event.id}}" >   
+        <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" style="bottom: 10px;">
+          <mat-icon>edit</mat-icon>
+        </button>
+        </a>
+      </mat-card-title>
+      <img mat-card-image src="{{event.picture}}" alt="eventimage" class="eventimage"style="margin-left: -2100px;">
+      <mat-card-content style="margin-left: 40px;">
+      <p style="margin-top: 100px;">
+          {{event.description}}
+      </p>
+      <h2 > Date</h2>
+      {{event.date}}
+      <h2> Online event</h2>
+      <h2> Attendees</h2>
+      <img src="./assets/attendee1.png">
+      <img src="./assets/Screenshot 2021-07-07 at 11.08.57.png">
+      <img src="./assets/Screenshot 2021-07-07 at 11.09.01.png">
+      <button class="add" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" style="bottom: 70px; margin-left: 15px; width:50px; height:50px;">
+          +10
+      </button>
+      </mat-card-content>
+  </mat-card>
+  </div>
 </body>

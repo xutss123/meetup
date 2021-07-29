@@ -1,12 +1,27 @@
+<head></head>
 <body>
-    <div>
-      <img class="logo" src="/assets/meetup-logo-script-1200x630.png" style="width: 900px;">
-    </div>
-    <div>
-      <button mat-raised-button color="warn">
-      <a  routerLink="/dashboard">
-        Login
-      </a>
-    </button>
-    </div>
+  <div>
+    <img class="logo" src="/assets/meetup-logo-script-1200x630.png" style="width: 900px;">
+  </div>
+  <div>
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your username</mat-label>
+        <input matInput placeholder="pat@example.com"  required>
+        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+        <button mat-raised-button color="warn">
+          <a roterlink= "/dashboard" type="submit">
+            Login with meetup 
+          </a>
+        </button>
+    </form>
+  </div>
 </body>
